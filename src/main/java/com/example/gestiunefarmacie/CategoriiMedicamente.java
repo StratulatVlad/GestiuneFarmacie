@@ -1,7 +1,7 @@
 package com.example.gestiunefarmacie;
 
 public enum CategoriiMedicamente {
-    Analgezice, Antiinflamatoare, Antibiotice, Vitamine, Anabolizante;
+    Analgezic, Antiinflamator, Antibiotic, Vitamine, Anabolizant;
 
     private CategoriiMedicamente(){}
 

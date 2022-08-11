@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestiunefarmacie.Task1Controller">
+   <children>
+      <Label layoutX="164.0" layoutY="23.0" prefHeight="37.0" prefWidth="212.0" text="Gestiune Farmacie" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="20.0" layoutY="60.0" prefHeight="81.0" prefWidth="507.0" text="&#9;&#9;&#9;&#9;Task 1&#10;Afisarea tuturor farmaciilor dintr-un anumit oras&#10;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="cancelButton" layoutX="421.0" layoutY="397.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="25.0" prefWidth="70.0" text="Cancel" />
+      <ChoiceBox fx:id="comboOras" layoutX="164.0" layoutY="146.0" prefWidth="150.0" />
+      <Label layoutX="80.0" layoutY="150.0" prefHeight="17.0" prefWidth="84.0" text="Alegeti orasul:" />
+      <Button fx:id="afisareButton" layoutX="338.0" layoutY="146.0" mnemonicParsing="false" onAction="#afisareButtonOnAction" prefHeight="25.0" prefWidth="92.0" text="Afiseaza" />
+      <TableView fx:id="farmaciiTable" layoutX="104.0" layoutY="197.0" prefHeight="160.0" prefWidth="327.0">
+        <columns>
+          <TableColumn fx:id="numeCol" prefWidth="102.0" text="Nume" />
+          <TableColumn fx:id="adresaCol" prefWidth="105.0" text="Adresa" />
+            <TableColumn fx:id="contactCol" prefWidth="119.0" text="Contact" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
