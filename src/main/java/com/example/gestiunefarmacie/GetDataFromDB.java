@@ -1,53 +1,34 @@
 package com.example.gestiunefarmacie;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class GetDataFromDB {
-    public Connection connection;
 
-    public GetDataFromDB(){
-        try{
-            this.connection = DBconnection.getConnection();
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-        }
-        if(this.connection == null)
-        {
-            System.exit(1);
-        }
-    }
 
-    public boolean isDatabaseConnected(){
-        return this.connection != null;
-    }
+    public void getPharma(Orase oras) throws  SQLException{
+        DBconnection dBconnection= new DBconnection();
+        Connection connection = dBconnection.getConnection();
 
-    public void getPharma(Orase oras) throws Exception{
+
         PreparedStatement pr = null;
-        ResultSet rs = null;
+        ResultSet queryResult = null;
 
-        String sql = "SELECT nume FROM Farmacii where oras = ?";
+        String sql = "SELECT nume FROM Farmacii where oras ='" +oras.value() + "'";
 
         try{
-            pr = this.connection.prepareStatement(sql);
-            pr.setString(1,oras.value());
+            Statement statement=connection.createStatement();
+            queryResult= statement.executeQuery(sql);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            e.getCause();
+            throw new SQLException("SQL Select statemant returns null");
 
-            rs = pr.executeQuery();
+        }
 
-            while(rs.next())
-            {
-                System.out.println(sql);
-            }
+        while(queryResult.next()){
+            System.out.println(queryResult.getString("nume"));
         }
-        catch(Exception ex){
-            System.exit(2);
-        }
-        finally{
-            pr.close();
-            rs.close();
-        }
+
     }
 }

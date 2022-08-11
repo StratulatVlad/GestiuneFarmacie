@@ -6,17 +6,19 @@ import java.sql.DriverManager;
 public class DBconnection {
 
     public Connection databaseLink;
+
+
     public Connection getConnection() {
 
-        String USERNAME = "root";
-        String PASSWORD = "root";
-        String CONN = "jdbc:mysql://localhost:3306/farmadb";
-        try{
+        String databaseName = "farmadb";
+        String databaseUser = "root";
+        String databasePassword = "root";
+        String url = "jdbc:mysql://localhost/" + databaseName;
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            databaseLink =  DriverManager.getConnection(CONN,USERNAME,PASSWORD);
-        }
-        catch (Exception ex) {
-            ex.printStackTrace();
+            databaseLink = DriverManager.getConnection(url, databaseUser, databasePassword);
+        }catch(Exception e){
+            e.printStackTrace();
         }
         return databaseLink;
     }

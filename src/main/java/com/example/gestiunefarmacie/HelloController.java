@@ -1,29 +1,27 @@
 package com.example.gestiunefarmacie;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.sql.SQLException;
 
-public class HelloController implements Initializable {
+public class HelloController{
 
-    GetDataFromDB getdata = new GetDataFromDB();
     @FXML
     private Button afisareFarma;
 
     @FXML
     private Label dbstatus;
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        if(this.getdata.isDatabaseConnected()){
-            this.dbstatus.setText("Connected");
-        }
-        else {
-            this.dbstatus.setText("Not connected");
+
+    public void afisareFarmaButtonOnAction(ActionEvent e){
+        GetDataFromDB getDataFromDB= new GetDataFromDB();
+        try {
+            getDataFromDB.getPharma(Orase.Timisoara);
+        } catch (SQLException exception) {
+            exception.printStackTrace();
         }
     }
 }
