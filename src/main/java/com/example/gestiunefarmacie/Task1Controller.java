@@ -57,8 +57,9 @@ public class Task1Controller implements Initializable {
                 throw new SQLException("SQL Select statemant returns null");
 
             }
-
+            farmaciiTable.getItems().clear();
             while(queryResult.next()){
+
                 String nume = queryResult.getString("nume");
                 String adresa = queryResult.getString("adresa");
                 String telefon = queryResult.getString("telefon");
@@ -66,10 +67,9 @@ public class Task1Controller implements Initializable {
                 numeCol.setCellValueFactory(new PropertyValueFactory<>("nume"));
                 adresaCol.setCellValueFactory(new PropertyValueFactory<>("adresa"));
                 contactCol.setCellValueFactory(new PropertyValueFactory<>("telefon"));
-                farmaciiTable.setItems(farmacieObservableList);
 
             }
-
+            farmaciiTable.setItems(farmacieObservableList);
 
     }
 
