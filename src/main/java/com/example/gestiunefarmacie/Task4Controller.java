@@ -34,7 +34,6 @@ public class Task4Controller {
 
 
         String sql = "SELECT f.cod,f.oras,f.nume,sum(c.cantitate_com * m.pret) as suma_comanda FROM Farmacii f, Medicamente m, Comenzi c where c.cod_med = m.cod_med and m.cod_farma = f.cod and c.data_livrare >= '"+textAn.getText()+"-01-01' and c.data_livrare <= '"+textAn.getText()+"-12-31' group by f.cod,f.oras,f.nume";
-        //String sql = "SELECT f.cod,f.oras,f.nume,sum(suma_absoluta) = (select (m.pret * c.cantitate_com) as suma_comanda from Medicamente m, Comenzi c where c.cod_med = m.cod_med and c.data_livrare >= '\"+textAn.getText()+\"-01-01' and c.data_livrare <= '\"+textAn.getText()+\"-12-31')  FROM Farmacii f where m.cod_farma = f.cod group by f.cod,f.oras,f.nume";
 
         try{
             Statement statement=connection.createStatement();
