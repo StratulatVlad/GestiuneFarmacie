@@ -21,7 +21,8 @@
       <TextField fx:id="textAn" layoutX="180.0" layoutY="174.0" />
       <Button fx:id="afisareButton" layoutX="350.0" layoutY="174.0" mnemonicParsing="false" onAction="#afisareButtonOnAction" prefHeight="25.0" prefWidth="81.0" text="Afisare" />
       <Label layoutX="85.0" layoutY="210.0" prefHeight="17.0" prefWidth="81.0" text="Farmacia este:" />
-      <Label fx:id="farmaLabel" layoutX="180.0" layoutY="210.0" prefHeight="17.0" prefWidth="59.0" />
-      <Label fx:id="orasLabel" layoutX="255.0" layoutY="210.0" prefHeight="17.0" prefWidth="59.0" />
+      <Label fx:id="farmaLabel" layoutX="180.0" layoutY="210.0" prefHeight="17.0" prefWidth="51.0" />
+      <Label fx:id="orasLabel" layoutX="231.0" layoutY="210.0" prefHeight="17.0" prefWidth="51.0" />
+      <Label fx:id="sumaLabel" layoutX="293.0" layoutY="210.0" prefHeight="17.0" prefWidth="51.0" />
    </children>
 </AnchorPane>

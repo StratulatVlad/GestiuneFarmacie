@@ -20,6 +20,8 @@ public class Task4Controller {
     private Label farmaLabel;
     @FXML
     private Label orasLabel;
+    @FXML
+    private Label sumaLabel;
     public void afisareButtonOnAction(ActionEvent event) throws SQLException {
         DBconnection dBconnection= new DBconnection();
         Connection connection = dBconnection.getConnection();
@@ -31,8 +33,8 @@ public class Task4Controller {
 
 
 
-        //String sql = "SELECT f.cod,f.nume,c.cantitate_com,m.pret,sum((c.cantitate_com * m.pret)) as suma_absoluta  FROM Farmacii f, Medicamente m, Comenzi c where c.cod_med = m.cod_med and m.cod_farma = f.cod and c.data_livrare >= '"+textAn.getText()+"-01-01' and c.data_livrare <= '"+textAn.getText()+"-12-31' group by f.cod,f.nume, c.cantitate_com, m.pret";
-        //String sql = "Select f.nume,f.oras,sum(suma_comanda) as suma_absoluta from Farmacii f where suma_comanda in (Select (c.cantitate_com * m.pret) as suma_comanda from Medicamente m, Comenzi c where c.cod_med = m.cod_med)";
+        String sql = "SELECT f.cod,f.oras,f.nume,sum(c.cantitate_com * m.pret) as suma_comanda FROM Farmacii f, Medicamente m, Comenzi c where c.cod_med = m.cod_med and m.cod_farma = f.cod and c.data_livrare >= '"+textAn.getText()+"-01-01' and c.data_livrare <= '"+textAn.getText()+"-12-31' group by f.cod,f.oras,f.nume";
+        //String sql = "SELECT f.cod,f.oras,f.nume,sum(suma_absoluta) = (select (m.pret * c.cantitate_com) as suma_comanda from Medicamente m, Comenzi c where c.cod_med = m.cod_med and c.data_livrare >= '\"+textAn.getText()+\"-01-01' and c.data_livrare <= '\"+textAn.getText()+\"-12-31')  FROM Farmacii f where m.cod_farma = f.cod group by f.cod,f.oras,f.nume";
 
         try{
             Statement statement=connection.createStatement();
@@ -45,17 +47,23 @@ public class Task4Controller {
             throw new SQLException("SQL Select statemant returns null");
 
         }
+
         Integer max_suma = 0;
         String max_farma = null;
+        String max_oras = null;
         while(queryResult.next()){
-            System.out.println(queryResult.getString("suma_absoluta")+" " + queryResult.getString("nume") +" "+ queryResult.getString("cod"));
-            if(max_suma <Integer.parseInt(queryResult.getString("suma_absoluta"))){
-                max_suma = Integer.parseInt(queryResult.getString("suma_absoluta"));
+            System.out.println(queryResult.getString("suma_comanda")+" " + queryResult.getString("nume") +" "+ queryResult.getString("cod"));
+            if(max_suma <Integer.parseInt(queryResult.getString("suma_comanda"))){
+                max_suma = Integer.parseInt(queryResult.getString("suma_comanda"));
                 max_farma = queryResult.getString("nume");
+                max_oras = queryResult.getString("oras");
             }
+
         }
 
-        //System.out.println(max_farma);
+        farmaLabel.setText(max_farma);
+        orasLabel.setText(max_oras);
+        sumaLabel.setText(max_suma.toString() + " lei");
 
 
     }
