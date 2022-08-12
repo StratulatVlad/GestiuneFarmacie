@@ -17,5 +17,11 @@
          </font>
       </Label>
       <Button fx:id="cancelButton" layoutX="421.0" layoutY="397.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="25.0" prefWidth="70.0" text="Cancel" />
+      <Label layoutX="85.0" layoutY="178.0" prefHeight="17.0" prefWidth="95.0" text="Introduceti anul:" />
+      <TextField fx:id="textAn" layoutX="180.0" layoutY="174.0" />
+      <Button fx:id="afisareButton" layoutX="350.0" layoutY="174.0" mnemonicParsing="false" onAction="#afisareButtonOnAction" prefHeight="25.0" prefWidth="81.0" text="Afisare" />
+      <Label layoutX="85.0" layoutY="210.0" prefHeight="17.0" prefWidth="81.0" text="Farmacia este:" />
+      <Label fx:id="farmaLabel" layoutX="180.0" layoutY="210.0" prefHeight="17.0" prefWidth="59.0" />
+      <Label fx:id="orasLabel" layoutX="255.0" layoutY="210.0" prefHeight="17.0" prefWidth="59.0" />
    </children>
 </AnchorPane>
